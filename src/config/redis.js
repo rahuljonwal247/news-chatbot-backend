@@ -4,8 +4,9 @@ const { logger } = require('../utils/logger');
 class RedisClient {
   constructor() {
     this.client = createClient({
-      url: process.env.REDIS_URL || 'redis://localhost:6379',
+      url: process.env.REDIS_URL,
       socket: {
+        tls: true, // Ensure TLS for Upstash
         reconnectStrategy: (retries) => {
           if (retries > 10) return new Error('Redis connection failed after 10 retries');
           return retries * 1000; // exponential backoff
@@ -40,10 +41,7 @@ class RedisClient {
   }
 }
 
-// Singleton instance
 const redisInstance = new RedisClient();
-
-// Export ready-to-use client
 const redisClient = redisInstance.client;
 
 module.exports = { redisClient, connectRedis: () => redisInstance.connect() };
