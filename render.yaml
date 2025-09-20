@@ -1,31 +1,4 @@
 services:
-  # -----------------------
-  # Redis Private Service
-  # -----------------------
-  - type: web
-    name: redis
-    env: docker
-    repo: https://github.com/rahuljonwal247/redis-on-render
-    branch: main
-    plan: starter
-    private: true
-    autoDeploy: true
-
-  # -----------------------
-  # Qdrant Private Service
-  # -----------------------
-  - type: web
-    name: qdrant
-    env: docker
-    repo: https://github.com/rahuljonwal247/qdrant-on-render
-    branch: main
-    plan: starter
-    private: true
-    autoDeploy: true
-
-  # -----------------------
-  # Backend Public Service
-  # -----------------------
   - type: web
     name: news-chatbot-backend
     env: node
