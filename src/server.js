@@ -13,7 +13,7 @@ const chatRoutes = require('./routes/chat');
 const sessionRoutes = require('./routes/session');
 const { handleSocketConnection } = require('./services/socketService');
 const ragService = require('./services/ragService');
-
+const ingestRoute = require('./routes/ingestRoute');
 
 class ChatbotServer {
   constructor() {
@@ -71,7 +71,7 @@ class ChatbotServer {
         version: process.env.npm_package_version || '1.0.0'
       });
     });
-
+this.app.use('/api', ingestRoute);
     // 404 handler
     this.app.use('*', (req, res) => {
       res.status(404).json({ error: 'Endpoint not found' });
