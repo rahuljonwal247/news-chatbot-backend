@@ -5,7 +5,7 @@ services:
   - type: web
     name: redis
     env: docker
-    repo: https://github.com/rahuljonwal247/redis-on-renderss
+    repo: https://github.com/rahuljonwal247/redis-on-render
     branch: main
     plan: starter
     private: true
@@ -17,7 +17,7 @@ services:
   - type: web
     name: qdrant
     env: docker
-    repo: https://github.com/rahuljonwal247/qdrant-on-renderss
+    repo: https://github.com/rahuljonwal247/qdrant-on-render
     branch: main
     plan: starter
     private: true
@@ -29,7 +29,7 @@ services:
   - type: web
     name: news-chatbot-backend
     env: node
-    repo: https://github.com/news-chatbot-backend
+    repo: https://github.com/rahuljonwal247/news-chatbot-backend
     branch: main
     plan: starter
     buildCommand: npm install
@@ -47,7 +47,6 @@ services:
         value: https://news-chatbot-frontend-q0xj.onrender.com
       - key: LOG_LEVEL
         value: info
-      # Add API keys here safely
       - key: GEMINI_API_KEY
         sync: false
       - key: JINA_API_KEY
